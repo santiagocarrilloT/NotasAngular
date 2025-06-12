@@ -79,7 +79,8 @@ hr {
   }
 }
 
-.input-error {
+.input-error,
+.input-error-state {
   border: 1px solid #c67d7d;
   background-color: #c67d7d56;
   border-radius: 10px;

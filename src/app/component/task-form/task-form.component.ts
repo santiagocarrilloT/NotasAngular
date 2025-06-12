@@ -29,7 +29,7 @@ import {
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-
+import { ToastController } from '@ionic/angular';
 @Component({
   selector: 'app-task-form',
   templateUrl: './task-form.component.html',
@@ -63,7 +63,8 @@ export class TaskFormComponent implements OnInit {
     private taskService: TaskService,
     private route: ActivatedRoute,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private toastController: ToastController
   ) {
     addIcons({
       checkmarkCircleOutline,
@@ -122,7 +123,6 @@ export class TaskFormComponent implements OnInit {
           },
           error: (err) => {
             console.error('Error al actualizar tarea:', err);
-            // Aquí puedes mostrar un mensaje al usuario
           },
         });
       }
@@ -158,30 +158,25 @@ export class TaskFormComponent implements OnInit {
     }
   }
 
+  /* Cargar componentes de nuevo */
   ionViewWillEnter() {
     const id = String(this.route.snapshot.paramMap.get('id'));
-    if (id) {
-      this.taskService.getTask(id).subscribe({
-        next: (task) => {
-          this.typeForm = 'Editar';
-          this.task = task;
+    this.taskService.getTask(id).subscribe({
+      next: (task) => {
+        this.typeForm = 'Editar';
+        this.task = task;
 
-          //Asignar valores del formulario
-          this.form.patchValue({
-            title: task.title,
-            description: task.description,
-            state: task.state,
-          });
-        },
-        error: (err) => {
-          console.error('Error al obtener tarea:', err);
-          // Aquí puedes mostrar un mensaje al usuario
-        },
-      });
-    } else {
-      this.typeForm = 'Crear';
-      this.task = null;
-      this.form.reset();
-    }
+        //Asignar valores del formulario
+        this.form.patchValue({
+          title: task.title,
+          description: task.description,
+          state: task.state,
+        });
+      },
+      error: (err) => {
+        console.error('Error al obtener tarea:', err);
+        // Aquí puedes mostrar un mensaje al usuario
+      },
+    });
   }
 }

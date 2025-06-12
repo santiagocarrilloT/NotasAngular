@@ -9,6 +9,7 @@
     <!-- Botón Guardar -->
     <ion-button
       id="open-toast"
+      [disabled]="form.invalid"
       color="new"
       slot="end"
       fill="clear"
@@ -50,7 +51,8 @@
       [ngClass]="{
         'state-pendiente': form.value.state === 'Pendiente',
         'state-progreso': form.value.state === 'En Progreso',
-        'state-finalizada': form.value.state === 'Finalizada'
+        'state-finalizada': form.value.state === 'Finalizada',
+        'input-error': f['state'].invalid && f['state'].touched
       }"
     >
       <ion-select
@@ -59,7 +61,6 @@
         interface="popover"
         placeholder="Estado tarea"
         class="selectStateTask"
-        [ngClass]="{ 'input-error': f['state'].invalid && f['state'].touched }"
       >
         <ion-select-option class="optionsStateTask" value="Pendiente"
           >Pendiente</ion-select-option

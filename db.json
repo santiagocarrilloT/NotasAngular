@@ -4,18 +4,18 @@
       "id": "1",
       "title": "Completar el formulario",
       "description": "Se desarrolló un formulario para crear nuevas tareas y editarlas, con sus respectivas validaciones",
-      "state": "En Progreso"
+      "state": "Finalizada"
     },
     {
       "id": "d3c0",
       "title": "Lista de Tareas",
       "description": "Crear una lista de tareas con una buena experiencia UX/UI",
-      "state": "En Progreso"
+      "state": "Finalizada"
     },
     {
       "id": "fa2c",
-      "title": "Nueva actualización tarea",
-      "description": "Descripciónsdmvsk wt hr h d  g hgkfomdsqvmokmgreoamsdkvqfonboeqnvdofscamsqokdamvk",
+      "title": "Sistem de Búsqueda",
+      "description": "Generar un sistema de búsqueda para cada una de las tareas existentes",
       "state": "En Progreso"
     },
     {

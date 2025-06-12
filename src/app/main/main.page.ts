@@ -7,7 +7,6 @@ import {
   IonToolbar,
   IonTitle,
   IonContent,
-  IonButton,
   IonIcon,
   IonFab,
   IonFabButton,
@@ -30,7 +29,6 @@ import { Router } from '@angular/router';
   imports: [
     CommonModule,
     IonButtons,
-    IonButton,
     IonFab,
     IonFabButton,
     IonMenuButton,

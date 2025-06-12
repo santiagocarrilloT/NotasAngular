@@ -54,6 +54,17 @@
   --ion-color-new-contrast-rgb: 0, 0, 0;
   --ion-color-new-shade: #7dc6b4;
   --ion-color-new-tint: #99e4d1;
+
+  /* Colores Card */
+  --ion-color-background-card: #012d21;
+  --ion-color-hr-card: #00875a;
+
+  /* Tamaños fuente */
+  --font-size-title: 2rem; // Títulos principales
+  --font-size-subtitle: 1.5rem; // Subtítulos
+  --font-size-text: 1rem; // Texto general
+  --font-size-description: 0.9rem; // Descripciones
+  --font-size-form: 1.1rem; // Inputs y formularios
 }
 
 .ion-color-new {

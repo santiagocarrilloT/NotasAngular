@@ -3,14 +3,13 @@ import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import {
-  IonList,
-  IonItem,
-  IonLabel,
   IonCard,
   IonCardHeader,
   IonCardContent,
   IonCardTitle,
-  IonCardSubtitle,
+  IonGrid,
+  IonRow,
+  IonCol,
 } from '@ionic/angular/standalone';
 
 @Component({
@@ -19,15 +18,14 @@ import {
   styleUrls: ['./task-table.component.scss'],
   imports: [
     CommonModule,
-    IonList,
-    IonItem,
-    IonLabel,
     IonCard,
     IonCardHeader,
     IonCardContent,
     RouterModule,
     IonCardTitle,
-    IonCardSubtitle,
+    IonGrid,
+    IonRow,
+    IonCol,
   ],
 })
 export class TaskTableComponent implements OnInit {

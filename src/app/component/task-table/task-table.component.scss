@@ -1,6 +1,73 @@
+.ionTasksContent {
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  flex-direction: row;
+  //background-color: transparent;
+}
+
+.ionTasksRow {
+  padding: 0px;
+  margin: 0px;
+}
+
 .ionCardContent {
   display: flex;
   flex-direction: column;
-  align-items: left;
+  align-items: top;
+  justify-content: top;
+  background-color: var(--ion-color-background-card);
+  width: 100%;
+  height: 200px;
+  border: 1px solid var(--ion-color-new-shade);
+  padding: 0px;
+  margin: 0px;
+}
+
+.hrCard {
+  background-color: var(--ion-color-hr-card);
+  height: 10px;
+  margin: 0;
+  padding: 0;
+  top: 0;
+  width: 100%;
+  position: fixed;
+}
+
+.ionCardHeader {
+  display: flex;
+  flex-direction: row;
   justify-content: center;
+  align-items: top;
+  padding: 15px;
+  width: 100%;
+  height: fit-content;
+}
+
+.ionCardTitle {
+  text-align: left;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  font-size: var(--font-size-text);
+  font-weight: bold;
+}
+
+.ionCardDescription {
+  text-align: left;
+  justify-content: top;
+  align-items: top;
+  padding: 10px;
+  font-size: var(--font-size-description);
+}
+
+@media (max-width: 350px) {
+  .ionCardContent {
+    min-width: 0;
+    padding: 0;
+    height: 220px;
+  }
 }

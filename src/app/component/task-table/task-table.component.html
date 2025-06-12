@@ -1,19 +1,18 @@
-<!-- <ion-list>
-  <ion-item *ngFor="let task of tasks" (click)="goTaskForm(task.id)">
-    <ion-label>
-      <h2>{{ task.title }}</h2>
-      <p>{{ task.description }}</p>
-    </ion-label>
-  </ion-item>
-</ion-list> -->
+<ion-grid class="ionTasksContent">
+  <ion-row class="ionTasksRow">
+    <ion-col size="6" *ngFor="let task of tasks">
+      <ion-card class="ionCardContent" (click)="goTaskForm(task.id)">
+        <hr class="hrCard" />
+        <ion-card-header class="ionCardHeader">
+          <ion-card-title class="ionCardTitle"
+            >{{ task.title | slice : 0 : 20 }}...</ion-card-title
+          >
+        </ion-card-header>
 
-<ion-card class="ionCardContent" *ngFor="let task of tasks" (click)="goTaskForm(task.id)">
-  <ion-card-header>
-    <ion-card-title>{{ task.title }}</ion-card-title>
-    <!-- <ion-card-subtitle>Card Subtitle</ion-card-subtitle> -->
-  </ion-card-header>
-
-  <ion-card-content>
-    {{ task.description }}
-  </ion-card-content>
-</ion-card>
+        <ion-card-content class="ionCardDescription">
+          {{ task.description | slice : 0 : 61 }}...
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-grid>

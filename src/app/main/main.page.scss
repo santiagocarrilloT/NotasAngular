@@ -1,1 +1,12 @@
-
+.ionContentData {
+  ion-container {
+    margin: 5px;
+    --padding-start: 10px;
+    --padding-end: 10px;
+    --inner-padding-start: 0;
+    --inner-padding-end: 0;
+    --border-color: transparent;
+    --background: transparent;
+    --color: #000;
+  }
+}
