@@ -23,6 +23,12 @@
       "title": "Ventana de Login",
       "description": "Crear una ventana de Login, que solo simule el entrar en la aplicación, buen diseño y experiencia UX/UI.",
       "state": "Pendiente"
+    },
+    {
+      "id": "7bbc",
+      "title": "Tarea15646",
+      "description": "Descripcion",
+      "state": "En Progreso"
     }
   ]
 }

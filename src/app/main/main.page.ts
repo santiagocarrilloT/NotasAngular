@@ -10,6 +10,7 @@ import {
   IonIcon,
   IonFab,
   IonFabButton,
+  IonSearchbar,
 } from '@ionic/angular/standalone';
 
 import { RouterModule } from '@angular/router';
@@ -19,7 +20,7 @@ import { TaskService } from '../services/task.service';
 import { TaskTableComponent } from '../component/task-table/task-table.component';
 
 import { addIcons } from 'ionicons';
-import { add } from 'ionicons/icons';
+import { add, searchCircle } from 'ionicons/icons';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-main',
@@ -37,6 +38,7 @@ import { Router } from '@angular/router';
     IonTitle,
     IonIcon,
     IonContent,
+    IonSearchbar,
     RouterModule,
     TaskTableComponent,
   ],
@@ -46,6 +48,7 @@ export class MainPage implements OnInit {
   constructor(private taskService: TaskService, private router: Router) {
     addIcons({
       add,
+      searchCircle,
     });
   }
 
@@ -78,6 +81,10 @@ export class MainPage implements OnInit {
 
   goTaskForm() {
     this.router.navigate(['/task']);
+  }
+
+  goSearch() {
+    this.router.navigate(['/search']);
   }
 
   ionViewWillEnter() {

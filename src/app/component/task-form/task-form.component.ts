@@ -19,17 +19,14 @@ import {
   IonSelectOption,
   IonToast,
 } from '@ionic/angular/standalone';
-
 import { addIcons } from 'ionicons';
 import {
   arrowBack,
   checkmarkCircleOutline,
   chevronUpOutline,
 } from 'ionicons/icons';
-
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { ToastController } from '@ionic/angular';
 @Component({
   selector: 'app-task-form',
   templateUrl: './task-form.component.html',
@@ -63,8 +60,7 @@ export class TaskFormComponent implements OnInit {
     private taskService: TaskService,
     private route: ActivatedRoute,
     private fb: FormBuilder,
-    private router: Router,
-    private toastController: ToastController
+    private router: Router
   ) {
     addIcons({
       checkmarkCircleOutline,

@@ -3,14 +3,19 @@
     <ion-buttons slot="start">
       <ion-menu-button color="new" menu="m1"></ion-menu-button>
     </ion-buttons>
-    <ion-title>Main</ion-title>
+    <ion-title>Tareas</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ionContentData" color="new" [fullscreen]="true">
   <ion-header>
     <ion-toolbar color="new-rgb">
-      <ion-title size="large">Buscar</ion-title>
+      <ion-searchbar
+        class="ionSearchBar"
+        search-icon="search-circle"
+        placeholder="Buscar"
+        (click)="goSearch()"
+      ></ion-searchbar>
     </ion-toolbar>
   </ion-header>
 

@@ -1,0 +1,20 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <!-- Botón Volver -->
+    <ion-button fill="clear" slot="start" (click)="goBack()">
+      <ion-icon color="new" name="arrow-back"></ion-icon>
+    </ion-button>
+    <ion-searchbar
+      #searchBar
+      (ionInput)="searchTasks($event)"
+      class="ionSearchBar"
+      search-icon="search-circle"
+      placeholder="Buscar"
+    ></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ionContentData" color="new" [fullscreen]="true">
+  <!-- Tabla -->
+  <app-task-table [tasks]="tasks"></app-task-table>
+</ion-content>

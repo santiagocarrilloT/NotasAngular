@@ -20,4 +20,9 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./pages/task/task.component').then((m) => m.TaskComponent),
   },
+  {
+    path: 'search',
+    loadComponent: () =>
+      import('./pages/search/search.page').then((m) => m.SearchPage),
+  },
 ];

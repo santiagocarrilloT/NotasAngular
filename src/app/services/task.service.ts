@@ -1,14 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject, map } from 'rxjs';
 import { Task } from '../models/task.model';
-
-type ApiResponse = {
-  title: string;
-  description: string;
-  estate: 'Pendiente' | 'En Progreso' | 'Completado';
-  id: number;
-};
 
 @Injectable({
   providedIn: 'root',
@@ -47,20 +40,16 @@ export class TaskService {
   }
 
   //Buscar tareas
-  searchTasks(
-    query: string,
-    status?: 'Pendiente' | 'En Progreso' | 'Finalizada' | 'all'
-  ): Observable<Task[]> {
-    let params: any = {};
-    if (query) {
-      params = { ...params, q: query };
-    }
-
-    if (status && status !== 'all') {
-      params = { ...params, s: status };
-    }
-
-    return this.http.get<Task[]>(this.tasksUrl, { params: params });
+  searchTasks(query: string): Observable<Task[]> {
+    return this.http.get<Task[]>(this.tasksUrl).pipe(
+      map((tasks) => {
+        if (!query) return tasks;
+        return tasks.filter(
+          (task) =>
+            task.title.toLowerCase().includes(query.toLowerCase()) ||
+            task.description.toLowerCase().includes(query.toLowerCase())
+        );
+      })
+    );
   }
-
 }
