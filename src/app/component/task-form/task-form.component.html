@@ -1,0 +1,119 @@
+<ion-header color="new" [translucent]="true">
+  <ion-toolbar>
+    <!-- Botón Volver -->
+    <ion-button fill="clear" slot="start" (click)="goBack()">
+      <ion-icon color="new" name="arrow-back"></ion-icon>
+    </ion-button>
+    <!-- Título del Formulario -->
+    <ion-title>{{ typeForm }} Tarea</ion-title>
+    <!-- Botón Guardar -->
+    <ion-button
+      id="open-toast"
+      color="new"
+      slot="end"
+      fill="clear"
+      (click)="saveTask()"
+    >
+      <ion-icon name="checkmark-circle-outline"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<!-- Content -->
+<ion-content color="new" fullscreen="true" class="content-form">
+  <form class="form-items" [formGroup]="form" #taskForm>
+    <!-- Input Título -->
+    <ion-item
+      [ngClass]="{ 'input-error': f['title'].invalid && f['title'].touched }"
+    >
+      <ion-label color="dark" position="stacked">Título *</ion-label>
+      <ion-input formControlName="title"></ion-input>
+    </ion-item>
+    <hr />
+    <!-- Input Descripcion -->
+    <ion-item
+      [ngClass]="{
+        'input-error': f['description'].invalid && f['description'].touched
+      }"
+    >
+      <ion-label color="dark" position="stacked">Descripción *</ion-label>
+      <ion-textarea
+        autoGrow="true"
+        formControlName="description"
+        placeholder="Type something here"
+        class="label-description"
+      ></ion-textarea>
+    </ion-item>
+    <hr />
+    <!-- Input Estado -->
+    <ion-item
+      [ngClass]="{
+        'state-pendiente': form.value.state === 'Pendiente',
+        'state-progreso': form.value.state === 'En Progreso',
+        'state-finalizada': form.value.state === 'Finalizada'
+      }"
+    >
+      <ion-select
+        formControlName="state"
+        label="Estado"
+        interface="popover"
+        placeholder="Estado tarea"
+        class="selectStateTask"
+        [ngClass]="{ 'input-error': f['state'].invalid && f['state'].touched }"
+      >
+        <ion-select-option class="optionsStateTask" value="Pendiente"
+          >Pendiente</ion-select-option
+        >
+        <ion-select-option class="optionsStateTask" value="En Progreso"
+          >En Progreso</ion-select-option
+        >
+        <ion-select-option class="optionsStateTask" value="Finalizada"
+          >Finalizada</ion-select-option
+        >
+      </ion-select>
+    </ion-item>
+
+    <!-- Avisos (Warnings, Toast) -->
+    <!-- Toast confirmación -->
+    <ion-toast
+      trigger="open-toast"
+      message="Tarea guardada correctamente."
+      color="success"
+      [duration]="5000"
+    ></ion-toast>
+
+    <!-- Warning Título -->
+    <ion-text
+      *ngIf="f['title'].invalid && f['title'].touched"
+      class="error-message"
+      color="warning"
+    >
+      <span *ngIf="f['title'].errors?.['required']"> Titulo requerido. </span>
+      <span *ngIf="f['title'].errors?.['minlength']">
+        El título debe tener al menos 10 caracteres.
+      </span>
+    </ion-text>
+
+    <!-- Warning Descripción -->
+    <ion-text
+      *ngIf="f['description'].invalid && f['description'].touched"
+      class="error-message"
+      color="warning"
+    >
+      <span *ngIf="f['description'].errors?.['required']">
+        Descripción requerida.
+      </span>
+    </ion-text>
+
+    <!-- Warning Estado -->
+    <ion-text
+      *ngIf="f['state'].invalid && f['state'].touched"
+      class="error-message"
+      color="warning"
+    >
+      <span *ngIf="f['state'].errors?.['required']">
+        Elige un estado para la tarea.
+      </span>
+    </ion-text>
+  </form>
+</ion-content>

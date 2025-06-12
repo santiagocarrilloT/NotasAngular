@@ -1,0 +1,113 @@
+ion-textarea,
+ion-input {
+  --background: transparent;
+  --border-radius: 16px;
+  color: #000;
+  border-color: #000;
+}
+
+ion-label {
+  font-size: 900;
+  font-weight: bolder;
+  color: #000;
+}
+
+ion-select {
+  width: 100%;
+  background: transparent;
+  color: #000;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  --icon-color: #000;
+}
+
+.content-form {
+  ion-item {
+    margin: 5px;
+    --padding-start: 10px;
+    --padding-end: 10px;
+    --inner-padding-start: 0;
+    --inner-padding-end: 0;
+    --border-color: transparent;
+    --background: transparent;
+    --color: #000;
+  }
+}
+
+hr {
+  background-color: black;
+  height: 1px;
+  margin: 10px;
+}
+
+.state-pendiente {
+  --background: #fffbe7 !important;
+  --icon-color: #f1c40f !important;
+  color: #b7950b !important;
+  border-radius: 10px;
+  margin-left: 3px;
+  margin-right: 3px;
+}
+
+.state-progreso {
+  --background: #e7f0ff !important;
+  --icon-color: #3498db !important;
+  color: #21618c !important;
+  border-radius: 10px;
+  --icon-color: #000;
+  margin-left: 3px;
+  margin-right: 3px;
+}
+
+.state-finalizada {
+  --background: #e7ffe7 !important;
+  --icon-color: #27ae60 !important;
+  color: #196f3d !important;
+  border-radius: 10px;
+  --icon-color: #000;
+  margin-left: 3px;
+  margin-right: 3px;
+}
+
+.optionsStateTask {
+  ion-item {
+    --color: #000;
+    --background: #c6b67d;
+    --background-activated: #c6b67d;
+    --background-focused: #c6b67d;
+    --background-hover: #c6b67d;
+  }
+}
+
+.input-error {
+  border: 1px solid #c67d7d;
+  background-color: #c67d7d56;
+  border-radius: 10px;
+}
+
+.error-message {
+  background-color: #c6b67d;
+  padding: 10px 15px;
+  border-radius: 8px;
+  display: block;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin: 13px 10px 0px 10px;
+}
+
+.error-message span {
+  color: rgb(0, 0, 0);
+}
+
+.form-items {
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;
+  gap: 10px;
+}
+
+span {
+  font-size: 14px;
+  color: black;
+}

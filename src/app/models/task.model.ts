@@ -1,17 +1,8 @@
+export type Estate = 'Pendiente' | 'En Progreso' | 'Completado';
+
 export interface Task {
+  id: string;
   title: string;
   description: string;
-  estate: 'Pendiente' | 'En Progreso' | 'Completado';
-}
-
-interface createTask {
-  title: string;
-  description: string;
-  estate: 'Pendiente' | 'En Progreso' | 'Completado';
-}
-
-interface updateTask {
-  title: string;
-  description: string;
-  estate: 'Pendiente' | 'En Progreso' | 'Completado';
+  state: Estate;
 }

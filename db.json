@@ -1,10 +1,28 @@
 {
   "task": [
     {
-      "id": 1,
-      "title": "Task 1",
-      "description": "This is the first task",
-      "completed": false
+      "id": "1",
+      "title": "Completar el formulario",
+      "description": "Se desarrolló un formulario para crear nuevas tareas y editarlas, con sus respectivas validaciones",
+      "state": "En Progreso"
+    },
+    {
+      "id": "d3c0",
+      "title": "Lista de Tareas",
+      "description": "Crear una lista de tareas con una buena experiencia UX/UI",
+      "state": "En Progreso"
+    },
+    {
+      "id": "fa2c",
+      "title": "Nueva actualización tarea",
+      "description": "Descripciónsdmvsk wt hr h d  g hgkfomdsqvmokmgreoamsdkvqfonboeqnvdofscamsqokdamvk",
+      "state": "En Progreso"
+    },
+    {
+      "id": "997a",
+      "title": "Ventana de Login",
+      "description": "Crear una ventana de Login, que solo simule el entrar en la aplicación, buen diseño y experiencia UX/UI.",
+      "state": "Pendiente"
     }
   ]
 }

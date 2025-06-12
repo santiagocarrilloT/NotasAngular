@@ -1,17 +1,26 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-menu-button menu="m1"></ion-menu-button>
+      <ion-menu-button color="new" menu="m1"></ion-menu-button>
     </ion-buttons>
     <ion-title>Main</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content color="new" [fullscreen]="true">
   <ion-header>
-    <ion-toolbar>
-      <ion-title size="large">Main</ion-title>
+    <ion-toolbar color="new-rgb">
+      <ion-title size="large">Buscar</ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-button [routerLink]="['/form-component']">ProductList</ion-button>
+
+  <!-- Botón Nueva Tarea -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="goTaskForm()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <!-- Tabla -->
+  <app-task-table [tasks]="tasks"></app-task-table>
 </ion-content>

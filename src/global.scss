@@ -34,4 +34,41 @@
 
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import '@ionic/angular/css/palettes/dark.system.css';
+@import "@ionic/angular/css/palettes/dark.system.css";
+
+:root {
+  --ion-color-primary: #3880ff;
+  --ion-color-secondary: #3dc2ff;
+  --ion-color-tertiary: #5260ff;
+  --ion-color-success: #2dd36f;
+  --ion-color-warning: #ffc409;
+  --ion-color-danger: #eb445a;
+  --ion-color-dark: #222428;
+  --ion-color-medium: #92949c;
+  --ion-color-light: #f4f5f8;
+
+  /* Colores nuevos */
+  --ion-color-new: #8ee1cc;
+  --ion-color-new-rgb: 142, 225, 204;
+  --ion-color-new-contrast: #000000;
+  --ion-color-new-contrast-rgb: 0, 0, 0;
+  --ion-color-new-shade: #7dc6b4;
+  --ion-color-new-tint: #99e4d1;
+}
+
+.ion-color-new {
+  --ion-color-base: var(--ion-color-new);
+  --ion-color-base-rgb: var(--ion-color-new-rgb);
+  --ion-color-contrast: var(--ion-color-new-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-new-contrast-rgb);
+  --ion-color-shade: var(--ion-color-new-shade);
+  --ion-color-tint: var(--ion-color-new-tint);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --ion-background-color: #ffffff;
+    --ion-text-color: #fff;
+    // ...otros colores para modo oscuro
+  }
+}

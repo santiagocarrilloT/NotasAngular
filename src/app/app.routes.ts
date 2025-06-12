@@ -2,14 +2,22 @@ import { Routes } from '@angular/router';
 
 export const routes: Routes = [
   {
+    path: '',
+    redirectTo: '/main',
+    pathMatch: 'full',
+  },
+  {
     path: 'main',
     loadComponent: () => import('./main/main.page').then((m) => m.MainPage),
   },
   {
-    path: 'form-component',
+    path: 'task',
     loadComponent: () =>
-      import('./form-component/form-component.page').then(
-        (m) => m.FormComponentPage
-      ),
+      import('./pages/task/task.component').then((m) => m.TaskComponent),
+  },
+  {
+    path: 'task/:id',
+    loadComponent: () =>
+      import('./pages/task/task.component').then((m) => m.TaskComponent),
   },
 ];
