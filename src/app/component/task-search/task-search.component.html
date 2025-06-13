@@ -16,5 +16,15 @@
 
 <ion-content class="ionContentData" color="new" [fullscreen]="true">
   <!-- Tabla -->
+  <ion-spinner *ngIf="isLoading" name="crescent" class="ionSpinner">
+    {{ isLoading ? "Cargando tareas..." : "" }}
+  </ion-spinner>
+
+  <ion-card-content class="notFound-message" *ngIf="notFoundMessage">
+    <ion-text>
+      <p>{{ notFoundMessage }}</p>
+    </ion-text>
+  </ion-card-content>
+
   <app-task-table [tasks]="tasks"></app-task-table>
 </ion-content>

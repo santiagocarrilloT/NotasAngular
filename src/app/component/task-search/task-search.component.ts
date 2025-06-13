@@ -8,6 +8,9 @@ import {
   IonIcon,
   IonButton,
   IonSearchbar,
+  IonSpinner,
+  IonText,
+  IonCardContent,
 } from '@ionic/angular/standalone';
 import { TaskTableComponent } from '../task-table/task-table.component';
 import { Router } from '@angular/router';
@@ -32,11 +35,16 @@ import { debounceTime, Subject } from 'rxjs';
     IonSearchbar,
     TaskTableComponent,
     IonButton,
+    IonSpinner,
+    IonText,
+    IonCardContent,
   ],
 })
 export class TaskSearchComponent implements OnInit {
   searchChanged = new Subject<string>();
   @ViewChild('searchBar', { static: false }) searchBar!: IonSearchbar;
+  isLoading = false;
+  notFoundMessage = '';
 
   tasks: Task[] = [];
 
@@ -56,25 +64,39 @@ export class TaskSearchComponent implements OnInit {
   }
 
   goBack() {
+    this.isLoading = false;
     this.router.navigate(['/main']);
   }
 
   searchTasks(event: CustomEvent) {
     const searchValue = event.detail.value || '';
 
-    if (searchValue.length > 2) {
+    if (searchValue.length != '') {
       this.searchChanged.next(searchValue);
+
+      this.isLoading = true;
       this.searchChanged.pipe(debounceTime(300)).subscribe((searchParam) => {
         this.taskService.searchTasks(searchParam).subscribe({
           next: (tasks) => {
+            this.isLoading = false;
             this.tasks = tasks;
+
+            if (tasks.length === 0) {
+              this.notFoundMessage =
+                'No se encontraron tareas con ese criterio';
+            } else {
+              this.notFoundMessage = '';
+            }
           },
           error: (err) => {
-            console.error('Error al actualizar tareas:', err);
+            this.isLoading = false;
+            this.notFoundMessage = 'Error al cargar tareas:';
           },
         });
       });
     } else {
+      this.isLoading = false;
+      this.notFoundMessage = '';
       this.tasks = [];
     }
   }
