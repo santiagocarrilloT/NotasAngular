@@ -14,7 +14,7 @@
     },
     {
       "id": "fa2c",
-      "title": "Sistem de Búsqueda",
+      "title": "Sistema de Búsqueda",
       "description": "Generar un sistema de búsqueda para cada una de las tareas existentes",
       "state": "En Progreso"
     },
@@ -29,6 +29,15 @@
       "title": "Tarea15646",
       "description": "Descripcion",
       "state": "En Progreso"
+    }
+  ],
+
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "email": "admin@example.com",
+      "password": "123456"
     }
   ]
 }

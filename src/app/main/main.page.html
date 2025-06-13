@@ -4,6 +4,15 @@
       <ion-menu-button color="new" menu="m1"></ion-menu-button>
     </ion-buttons>
     <ion-title>Tareas</ion-title>
+    <ion-button
+      id="open-toast"
+      color="new"
+      slot="end"
+      fill="clear"
+      (click)="onLogout()"
+    >
+      <ion-icon name="log-out-outline"></ion-icon>
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 
@@ -26,6 +35,23 @@
     </ion-fab-button>
   </ion-fab>
 
+  <!-- Filtro por estado -->
+  <ion-list class="ionListFilter">
+    <ion-item class="ionItemFilter">
+      <ion-select
+        [(ngModel)]="selectedState"
+        (ionChange)="filterTasks($event)"
+        justify="end"
+        placeholder="Filtro por estado"
+        interface="popover"
+      >
+        <ion-select-option value="Todas">Todas</ion-select-option>
+        <ion-select-option value="Pendiente">Pendiente</ion-select-option>
+        <ion-select-option value="En Progreso">En Progreso</ion-select-option>
+        <ion-select-option value="Finalizada">Finalizada</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
   <!-- Tabla -->
   <app-task-table [tasks]="tasks"></app-task-table>
 </ion-content>

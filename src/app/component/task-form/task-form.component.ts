@@ -148,7 +148,6 @@ export class TaskFormComponent implements OnInit {
         },
         error: (err) => {
           console.error('Error al obtener tarea:', err);
-          // Aquí puedes mostrar un mensaje al usuario
         },
       });
     }
@@ -171,7 +170,6 @@ export class TaskFormComponent implements OnInit {
       },
       error: (err) => {
         console.error('Error al obtener tarea:', err);
-        // Aquí puedes mostrar un mensaje al usuario
       },
     });
   }

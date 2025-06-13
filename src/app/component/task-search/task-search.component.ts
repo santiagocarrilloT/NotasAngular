@@ -17,7 +17,7 @@ import { arrowBack, searchCircle } from 'ionicons/icons';
 import { Task } from '../../models/task.model';
 import { TaskService } from 'src/app/services/task.service';
 
-import { Subject } from 'rxjs';
+import { debounceTime, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-task-search',
@@ -63,9 +63,16 @@ export class TaskSearchComponent implements OnInit {
     const searchValue = event.detail.value || '';
 
     if (searchValue.length > 2) {
-      this.taskService.searchTasks(searchValue).subscribe((tasks) => {
-        console.log('tasks', tasks);
-        this.tasks = tasks;
+      this.searchChanged.next(searchValue);
+      this.searchChanged.pipe(debounceTime(300)).subscribe((searchParam) => {
+        this.taskService.searchTasks(searchParam).subscribe({
+          next: (tasks) => {
+            this.tasks = tasks;
+          },
+          error: (err) => {
+            console.error('Error al actualizar tareas:', err);
+          },
+        });
       });
     } else {
       this.tasks = [];

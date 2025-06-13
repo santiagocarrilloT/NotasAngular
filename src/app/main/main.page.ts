@@ -11,17 +11,24 @@ import {
   IonFab,
   IonFabButton,
   IonSearchbar,
+  IonList,
+  IonItem,
+  IonButton,
+  IonSelect,
+  IonSelectOption,
 } from '@ionic/angular/standalone';
 
 import { RouterModule } from '@angular/router';
+import { FormBuilder, FormGroup, FormsModule } from '@angular/forms';
 
 import { Task } from '../models/task.model';
 import { TaskService } from '../services/task.service';
 import { TaskTableComponent } from '../component/task-table/task-table.component';
 
 import { addIcons } from 'ionicons';
-import { add, searchCircle } from 'ionicons/icons';
+import { add, logOutOutline, searchCircle } from 'ionicons/icons';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 @Component({
   selector: 'app-main',
   templateUrl: './main.page.html',
@@ -39,30 +46,37 @@ import { Router } from '@angular/router';
     IonIcon,
     IonContent,
     IonSearchbar,
+    IonList,
+    IonItem,
+    IonSelect,
+    IonSelectOption,
+    IonButton,
     RouterModule,
     TaskTableComponent,
+    FormsModule,
   ],
 })
 export class MainPage implements OnInit {
   tasks: Task[] = [];
-  constructor(private taskService: TaskService, private router: Router) {
+  form: FormGroup;
+  selectedState: string = 'Todas';
+  constructor(
+    private authService: AuthService,
+    private taskService: TaskService,
+    private router: Router,
+    private fb: FormBuilder
+  ) {
     addIcons({
       add,
       searchCircle,
+      logOutOutline,
+    });
+    this.form = this.fb.group({
+      state: ['Todas'],
     });
   }
 
   ngOnInit() {
-    this.taskService.getTasks().subscribe({
-      next: (tasks) => {
-        this.tasks = tasks;
-      },
-      error: (err) => {
-        console.error('Error al obtener tareas:', err);
-        // Aquí puedes mostrar un mensaje al usuario
-      },
-    });
-
     /* this.taskService
       .createTask({
         title: 'Nueva tarea',
@@ -87,15 +101,38 @@ export class MainPage implements OnInit {
     this.router.navigate(['/search']);
   }
 
+  filterTasks(event: CustomEvent) {
+    const searchValue = event.detail.value;
+
+    if (searchValue === 'Todas') {
+      this.ionViewWillEnter();
+      return;
+    }
+
+    this.taskService.searchTasksState(searchValue).subscribe({
+      next: (tasks) => {
+        this.tasks = tasks;
+      },
+      error: (err) => {
+        console.error('Error al actualizar tareas:', err);
+      },
+    });
+  }
+
   ionViewWillEnter() {
+    this.selectedState = '';
     this.taskService.getTasks().subscribe({
       next: (tasks) => {
         this.tasks = tasks;
       },
       error: (err) => {
         console.error('Error al actualizar tareas:', err);
-        // Aquí puedes mostrar un mensaje al usuario
       },
     });
+  }
+
+  async onLogout() {
+    this.authService.logout();
+    this.router.navigate(['/login']);
   }
 }

@@ -51,7 +51,7 @@
   --ion-color-new: #8ee1cc;
   --ion-color-new-rgb: 142, 225, 204;
   --ion-color-new-contrast: #000000;
-  --ion-color-new-contrast-rgb: 0, 0, 0;
+  --ion-color-new-contrast-rgb: rgb(31, 102, 92);
   --ion-color-new-shade: #7dc6b4;
   --ion-color-new-tint: #99e4d1;
 
@@ -60,11 +60,17 @@
   --ion-color-hr-card: #00875a;
 
   /* Tamaños fuente */
-  --font-size-title: 2rem; // Títulos principales
-  --font-size-subtitle: 1.5rem; // Subtítulos
-  --font-size-text: 1rem; // Texto general
-  --font-size-description: 0.9rem; // Descripciones
-  --font-size-form: 1.1rem; // Inputs y formularios
+  --font-size-title: 1.9rem; // Títulos principales
+  --font-size-subtitle: 1.4rem; // Subtítulos
+  --font-size-text: 0.8rem; // Texto general
+  --font-size-description: 0.6rem; // Descripciones
+  --font-size-form: 0.9rem; // Inputs y formularios
+
+  --ion-font-family: "Inter", sans-serif;
+}
+
+* {
+  font-family: var(--ion-font-family);
 }
 
 .ion-color-new {

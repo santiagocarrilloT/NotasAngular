@@ -6,15 +6,22 @@
       </ion-toolbar>
     </ion-header>
 
-    <ion-content>
-      <ion-list>
+    <ion-content class="ionContent">
+      <ion-list class="ionList">
         <ion-menu-toggle>
           <ion-item button [routerLink]="['/main']" color="new-shade">
             <ion-label color="new">Home</ion-label>
           </ion-item>
         </ion-menu-toggle>
       </ion-list>
+
+      <hr />
+      <ion-button (click)="onLogout()" class="logoutButton" size="small">
+        <ion-icon name="log-out-outline"></ion-icon>
+        <ion-text>Cerrar sesión</ion-text>
+      </ion-button>
     </ion-content>
   </ion-menu>
+
   <ion-router-outlet id="main"></ion-router-outlet>
 </ion-app>

@@ -14,5 +14,18 @@
 .ionSearchBar {
   --background: #000000ce;
   border-radius: 10px;
-  --color: white; 
+  --color: white;
+}
+
+.ionListFilter {
+  background: transparent;
+  color: #000;
+}
+
+.ionItemFilter {
+  --background: transparent !important;
+  --color: #000 !important;
+  --border-color: transparent !important;
+  --border-radius: 10px;
+  font-weight: 700;
 }

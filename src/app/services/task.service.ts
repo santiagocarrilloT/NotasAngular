@@ -2,12 +2,13 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject, map } from 'rxjs';
 import { Task } from '../models/task.model';
+import { API_URL } from '../config';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TaskService {
-  private url = 'http://localhost:3000';
+  private url = API_URL;
   private tasksUrl = `${this.url}/task`;
   private tasksSubject = new BehaviorSubject<Task[]>([]);
   tasks$ = this.tasksSubject.asObservable();
@@ -39,7 +40,7 @@ export class TaskService {
     return this.http.delete<void>(`${this.tasksUrl}/${id}`);
   }
 
-  //Buscar tareas
+  //Buscar tareas sin query (Para titulo/text)
   searchTasks(query: string): Observable<Task[]> {
     return this.http.get<Task[]>(this.tasksUrl).pipe(
       map((tasks) => {
@@ -51,5 +52,11 @@ export class TaskService {
         );
       })
     );
+  }
+
+  //Buscar tareas con query (Para titulo/text)
+  searchTasksState(query: string): Observable<Task[]> {
+    const params = new HttpParams().set('state', query);
+    return this.http.get<Task[]>(this.tasksUrl, { params });
   }
 }

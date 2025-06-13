@@ -1,1 +1,29 @@
+ion-content {
+  gap: 40px;
+}
 
+.ionList {
+  --padding-end: 40px;
+}
+
+.spacerContent {
+  height: 100px;
+  flex: 1;
+}
+
+ion-button {
+  --background: var(--ion-color-new-contrast-rgb);
+  --background-hover: #9ce0be;
+
+  --color: white;
+
+  --border-radius: 5px;
+  --border-color: var(--ion-color-new-contrast);
+  --border-style: solid;
+  --border-width: 1px;
+
+  --ripple-color: var(--ion-color-new-contrast-rgb);
+
+  --padding-top: 4px;
+  --padding-bottom: 4px;
+}

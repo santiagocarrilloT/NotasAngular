@@ -11,11 +11,19 @@ import {
   IonItem,
   IonLabel,
   IonRouterOutlet,
+  IonButton,
+  IonIcon,
+  IonText,
+  MenuController,
 } from '@ionic/angular/standalone';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { addIcons } from 'ionicons';
+import { logOutOutline } from 'ionicons/icons';
+import { AuthService } from './services/auth.service';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
+  styleUrls: ['./app.component.scss'],
   standalone: true,
   imports: [
     IonApp,
@@ -30,8 +38,25 @@ import { RouterModule } from '@angular/router';
     IonLabel,
     IonRouterOutlet,
     RouterModule,
+    IonButton,
+    IonIcon,
+    IonText,
   ],
 })
 export class AppComponent {
-  constructor() {}
+  constructor(
+    private menu: MenuController,
+    private authService: AuthService,
+    private router: Router
+  ) {
+    addIcons({
+      logOutOutline,
+    });
+  }
+
+  onLogout() {
+    this.menu.close();
+    this.authService.logout();
+    this.router.navigate(['/login']);
+  }
 }

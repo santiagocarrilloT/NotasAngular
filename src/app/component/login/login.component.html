@@ -1,0 +1,86 @@
+<ion-content [fullscreen]="true">
+  <ion-card-content class="ionGridForm">
+    <ion-card class="ionCardForm">
+      <ion-card-header>
+        <ion-card-title class="ionTitleForm">Iniciar Sesión</ion-card-title>
+      </ion-card-header>
+
+      <form
+        class="ionForm"
+        (ngSubmit)="onLogin()"
+        [formGroup]="loginGroup"
+        #loginForm
+      >
+        <ion-item
+          class="ionItemForm"
+          [ngClass]="{
+            'input-error': f['username'].invalid && f['username'].touched
+          }"
+        >
+          <ion-label class="ionLabelForm" position="floating"
+            >Nombre Usuario</ion-label
+          >
+          <ion-input
+            class="ionInputForm"
+            type="text"
+            formControlName="username"
+          ></ion-input>
+        </ion-item>
+
+        <ion-item
+          class="ionItemForm"
+          [ngClass]="{
+            'input-error': f['password'].invalid && f['password'].touched
+          }"
+        >
+          <ion-label class="ionLabelForm" position="floating"
+            >Contraseña</ion-label
+          >
+          <ion-input
+            class="ionInputForm"
+            type="password"
+            formControlName="password"
+          ></ion-input>
+        </ion-item>
+
+        <ion-button class="ionBtnForm" type="submit">
+          <ion-spinner name="crescent" *ngIf="isLoading"></ion-spinner>
+          {{ isLoading ? "Iniciando..." : "Iniciar Sesión" }}
+        </ion-button>
+      </form>
+
+      <!-- Warning invalid -->
+      <ion-text class="error-message" color="danger" *ngIf="errorMessage">
+        <p>{{ errorMessage }}</p>
+      </ion-text>
+
+      <!-- Warning Username -->
+      <ion-text
+        *ngIf="f['username'].invalid && f['username'].touched"
+        class="error-message"
+        color="warning"
+      >
+        <span *ngIf="f['username'].errors?.['required']">
+          Nombre de usuario requerido.
+        </span>
+        <span *ngIf="f['username'].errors?.['minlength']">
+          El título debe tener al menos 5 caracteres.
+        </span>
+      </ion-text>
+
+      <!-- Warning Password -->
+      <ion-text
+        *ngIf="f['password'].invalid && f['password'].touched"
+        class="error-message"
+        color="warning"
+      >
+        <span *ngIf="f['password'].errors?.['required']">
+          Contraseña requerida.
+        </span>
+        <span *ngIf="f['password'].errors?.['minlength']">
+          La contraseña debe tener al menos 6 caracteres.
+        </span>
+      </ion-text>
+    </ion-card>
+  </ion-card-content>
+</ion-content>

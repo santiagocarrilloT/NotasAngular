@@ -1,0 +1,105 @@
+ion-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  background: linear-gradient(
+    158deg,
+    var(--ion-color-background-card) 50%,
+    var(--ion-color-new-shade) 100%
+  );
+  --background: none;
+}
+
+.ionGridForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  height: 100vh;
+}
+
+.ionCardForm {
+  --background: var(--ion-color-new-shade);
+  --color: var(--ion-color-new-contrast);
+  padding: 10px;
+  margin: 0px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.ionTitleForm {
+  color: #000;
+  font-size: var(--font-size-title);
+}
+
+.ionForm {
+  gap: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.ionItemForm {
+  width: 100%;
+  --background: var(--ion-color-new-tint);
+  --padding-start: 0px;
+  --border-color: transparent;
+  --border: none;
+  --border-radius: 12px;
+  padding: 8px;
+  text-align: top;
+}
+
+.ionLabelForm {
+  --color: var(--ion-color-new-contrast);
+  font-size: var(--font-size-form);
+  font-weight: bold;
+  justify-content: top;
+  align-items: top;
+  text-align: left;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.ionInputForm {
+  --background: transparent;
+  --color: var(--ion-color-new-contrast);
+  font-size: var(--font-size-form);
+  --padding-start: 7px !important;
+  padding-right: 8px;
+  border-radius: 12px;
+}
+
+.ionBtnForm {
+  --background: var(--ion-color-hr-card);
+  --color: white;
+  padding: 10px;
+  border-radius: 16px !important;
+  width: 100%;
+  font-size: var(--font-size-form);
+  margin-top: 10px;
+}
+
+.input-error {
+  border: 1px solid #c67d7d;
+  background-color: #c67d7d56;
+  border-radius: 10px;
+  color: #000;
+}
+
+.error-message {
+  background-color: var(--ion-color-warning);
+  padding: 10px 15px;
+  border-radius: 8px;
+  display: block;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin: 13px 10px 0px 10px;
+  color: #000;
+}
