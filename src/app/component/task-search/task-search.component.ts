@@ -14,8 +14,8 @@ import {
 } from '@ionic/angular/standalone';
 import { TaskTableComponent } from '../task-table/task-table.component';
 import { Router } from '@angular/router';
-import { addIcons } from 'ionicons';
 import { arrowBack, searchCircle } from 'ionicons/icons';
+import { addIcons } from 'ionicons';
 
 import { Task } from '../../models/task.model';
 import { TaskService } from 'src/app/services/task.service';

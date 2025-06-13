@@ -37,3 +37,13 @@
   --border-width: 1.5px;
   --color: white;
 }
+
+.notFound-message {
+  margin: 30px;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  --background-color: var(--ion-color-new-shade);
+  color: black;
+  background-color: var(--background-color);
+}

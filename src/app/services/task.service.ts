@@ -36,7 +36,7 @@ export class TaskService {
   }
 
   //Eliminar una tarea
-  deleteTask(id: number): Observable<void> {
+  deleteTask(id: string): Observable<void> {
     return this.http.delete<void>(`${this.tasksUrl}/${id}`);
   }
 

@@ -4,11 +4,22 @@
     <ion-button fill="clear" slot="start" (click)="goBack()">
       <ion-icon color="new" name="arrow-back"></ion-icon>
     </ion-button>
+
+    <!-- Botón Eliminar -->
+    <ion-button
+      fill="clear"
+      slot="start"
+      *ngIf="typeForm === 'Editar'"
+      (click)="deleteTask()"
+    >
+      <ion-icon color="new" name="close-circle-outline"></ion-icon>
+    </ion-button>
+
     <!-- Título del Formulario -->
     <ion-title>{{ typeForm }} Tarea</ion-title>
+
     <!-- Botón Guardar -->
     <ion-button
-      id="open-toast"
       [disabled]="form.invalid"
       color="new"
       slot="end"
@@ -70,12 +81,12 @@
 
     <!-- Avisos (Warnings, Toast) -->
     <!-- Toast confirmación -->
-    <ion-toast
+    <!-- <ion-toast
       trigger="open-toast"
       message="Tarea guardada correctamente."
       color="success"
       [duration]="5000"
-    ></ion-toast>
+    ></ion-toast> -->
 
     <!-- Warning Título -->
     <ion-text

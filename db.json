@@ -16,25 +16,24 @@
       "id": "fa2c",
       "title": "Sistema de Búsqueda",
       "description": "Generar un sistema de búsqueda para cada una de las tareas existentes",
-      "state": "En Progreso"
+      "state": "Finalizada"
     },
     {
       "id": "997a",
       "title": "Ventana de Login",
       "description": "Crear una ventana de Login, que solo simule el entrar en la aplicación, buen diseño y experiencia UX/UI.",
-      "state": "Pendiente"
+      "state": "Finalizada"
     },
     {
-      "id": "7bbc",
-      "title": "Tarea15646",
-      "description": "Descripcion",
+      "id": "3eed",
+      "title": "Crear Versión Movil",
+      "description": "Crear la versión movil de la aplicación. Tomar fotos de la aplicación funcionando.",
       "state": "En Progreso"
     }
   ],
-
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "username": "admin",
       "email": "admin@example.com",
       "password": "123456"

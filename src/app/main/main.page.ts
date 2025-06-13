@@ -16,6 +16,8 @@ import {
   IonButton,
   IonSelect,
   IonSelectOption,
+  IonCardContent,
+  IonText,
 } from '@ionic/angular/standalone';
 
 import { RouterModule } from '@angular/router';
@@ -38,6 +40,7 @@ import { AuthService } from '../services/auth.service';
     CommonModule,
     IonButtons,
     IonFab,
+    IonText,
     IonFabButton,
     IonMenuButton,
     IonHeader,
@@ -54,10 +57,12 @@ import { AuthService } from '../services/auth.service';
     RouterModule,
     TaskTableComponent,
     FormsModule,
+    IonCardContent,
   ],
 })
 export class MainPage implements OnInit {
   tasks: Task[] = [];
+  notFoundMessage = '';
   form: FormGroup;
   selectedState: string = 'Todas';
   constructor(
@@ -112,6 +117,11 @@ export class MainPage implements OnInit {
     this.taskService.searchTasksState(searchValue).subscribe({
       next: (tasks) => {
         this.tasks = tasks;
+        if (tasks.length === 0) {
+          this.notFoundMessage = 'No se encontraron tareas ' + searchValue;
+          return;
+        }
+        this.notFoundMessage = '';
       },
       error: (err) => {
         console.error('Error al actualizar tareas:', err);

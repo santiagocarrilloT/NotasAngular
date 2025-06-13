@@ -17,16 +17,17 @@ import {
   IonText,
   IonSelect,
   IonSelectOption,
-  IonToast,
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import {
   arrowBack,
   checkmarkCircleOutline,
   chevronUpOutline,
+  closeCircleOutline,
 } from 'ionicons/icons';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { ToastController } from '@ionic/angular';
 @Component({
   selector: 'app-task-form',
   templateUrl: './task-form.component.html',
@@ -45,7 +46,6 @@ import { CommonModule } from '@angular/common';
     IonIcon,
     IonSelect,
     IonText,
-    IonToast,
     IonSelectOption,
     ReactiveFormsModule,
   ],
@@ -60,12 +60,14 @@ export class TaskFormComponent implements OnInit {
     private taskService: TaskService,
     private route: ActivatedRoute,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private toastController: ToastController
   ) {
     addIcons({
       checkmarkCircleOutline,
       arrowBack,
       chevronUpOutline,
+      closeCircleOutline,
     });
     this.form = this.fb.group({
       title: ['', [Validators.required, Validators.minLength(10)]],
@@ -77,6 +79,20 @@ export class TaskFormComponent implements OnInit {
   goBack() {
     this.router.navigate(['/main']);
     this.form.reset();
+  }
+
+  deleteTask() {
+    if (!this.task) {
+      console.error('No se puede eliminar');
+      return;
+    }
+    this.taskService.deleteTask(this.task?.id).subscribe({
+      next: () => {
+        this.presentToast('Tarea eliminada correctamente', 'danger');
+        this.router.navigate(['/main']);
+      },
+      error: (err) => {},
+    });
   }
 
   saveTask() {
@@ -98,9 +114,11 @@ export class TaskFormComponent implements OnInit {
           })
           .subscribe({
             next: (task) => {
+              this.presentToast('Tarea creada correctamente', 'success');
               console.log('Tarea creada:', task);
             },
             error: (err) => {
+              this.presentToast('Error al crear tarea', 'danger');
               console.error('Error al crear tarea:', err);
             },
           });
@@ -114,10 +132,10 @@ export class TaskFormComponent implements OnInit {
         /* Editar una tarea */
         this.taskService.updateTask(updatedTask).subscribe({
           next: (task) => {
-            //this.router.navigate(['/main']);
-            //this.form.reset();
+            this.presentToast('Tarea editada correctamente', 'success');
           },
           error: (err) => {
+            this.presentToast('Error al editar', 'danger');
             console.error('Error al actualizar tarea:', err);
           },
         });
@@ -172,5 +190,15 @@ export class TaskFormComponent implements OnInit {
         console.error('Error al obtener tarea:', err);
       },
     });
+  }
+
+  async presentToast(message: string, color: 'danger' | 'success' = 'success') {
+    const toast = await this.toastController.create({
+      message,
+      duration: 2000,
+      color,
+      position: 'bottom',
+    });
+    await toast.present();
   }
 }
