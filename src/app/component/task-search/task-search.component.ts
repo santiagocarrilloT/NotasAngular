@@ -55,12 +55,25 @@ export class TaskSearchComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.searchChanged.pipe(debounceTime(300)).subscribe((searchParam) => {
+      this.taskService.searchTasks(searchParam).subscribe({
+        next: (tasks) => {
+          this.isLoading = false;
+          this.tasks = tasks;
 
-  ngAfterViewInit() {
-    setTimeout(() => {
-      this.searchBar.setFocus();
-    }, 300);
+          if (tasks.length === 0) {
+            this.notFoundMessage = 'No se encontraron tareas con ese criterio';
+          } else {
+            this.notFoundMessage = '';
+          }
+        },
+        error: (err) => {
+          this.isLoading = false;
+          this.notFoundMessage = 'Error al cargar tareas:';
+        },
+      });
+    });
   }
 
   goBack() {
@@ -71,29 +84,9 @@ export class TaskSearchComponent implements OnInit {
   searchTasks(event: CustomEvent) {
     const searchValue = event.detail.value || '';
 
-    if (searchValue.length != '') {
-      this.searchChanged.next(searchValue);
-
+    if (searchValue.length > 0) {
       this.isLoading = true;
-      this.searchChanged.pipe(debounceTime(300)).subscribe((searchParam) => {
-        this.taskService.searchTasks(searchParam).subscribe({
-          next: (tasks) => {
-            this.isLoading = false;
-            this.tasks = tasks;
-
-            if (tasks.length === 0) {
-              this.notFoundMessage =
-                'No se encontraron tareas con ese criterio';
-            } else {
-              this.notFoundMessage = '';
-            }
-          },
-          error: (err) => {
-            this.isLoading = false;
-            this.notFoundMessage = 'Error al cargar tareas:';
-          },
-        });
-      });
+      this.searchChanged.next(searchValue);
     } else {
       this.isLoading = false;
       this.notFoundMessage = '';

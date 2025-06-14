@@ -52,11 +52,14 @@
       </ion-select>
     </ion-item>
   </ion-list>
-  <!-- Tabla -->
+
+  <!-- Mensaje en caso de ser vacío -->
   <ion-card-content class="notFound-message" *ngIf="notFoundMessage">
     <ion-text>
       <p>{{ notFoundMessage }}</p>
     </ion-text>
   </ion-card-content>
+
+  <!-- Tabla -->
   <app-task-table [tasks]="tasks"></app-task-table>
 </ion-content>

@@ -9,7 +9,7 @@ import { API_URL } from '../config';
 })
 export class TaskService {
   private url = API_URL;
-  private tasksUrl = `${this.url}/task`;
+  tasksUrl = `${this.url}/task`;
   private tasksSubject = new BehaviorSubject<Task[]>([]);
   tasks$ = this.tasksSubject.asObservable();
 
@@ -57,6 +57,7 @@ export class TaskService {
   //Buscar tareas con query (Para titulo/text)
   searchTasksState(query: string): Observable<Task[]> {
     const params = new HttpParams().set('state', query);
+
     return this.http.get<Task[]>(this.tasksUrl, { params });
   }
 }

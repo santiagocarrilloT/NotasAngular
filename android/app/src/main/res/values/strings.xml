@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">notesAngular</string>
+    <string name="title_activity_main">notesAngular</string>
+    <string name="package_name">com.santiagocarrillo.app</string>
+    <string name="custom_url_scheme">com.santiagocarrillo.app</string>
+</resources>
