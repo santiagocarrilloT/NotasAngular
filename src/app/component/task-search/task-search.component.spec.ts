@@ -64,6 +64,10 @@ describe('TaskSearchComponent', () => {
   });
 
   it('busca tareas con éxito', fakeAsync(() => {
+    fixture = TestBed.createComponent(TaskSearchComponent);
+    component = fixture.componentInstance;
+    component.ngOnInit();
+
     mockTaskService.searchTasks.and.returnValue(of(mockTasks));
 
     const event = { detail: { value: 'Descripcion' } } as CustomEvent;
@@ -78,13 +82,20 @@ describe('TaskSearchComponent', () => {
   }));
 
   it('muestra el mensaje de no encontrado', fakeAsync(() => {
+    fixture = TestBed.createComponent(TaskSearchComponent);
+    component = fixture.componentInstance;
+    component.ngOnInit();
+
     mockTaskService.searchTasks.and.returnValue(of([]));
 
     const event = { detail: { value: 'No existe una tarea' } } as CustomEvent;
     component.searchTasks(event);
 
-    tick(600);
+    tick(300);
 
+    expect(mockTaskService.searchTasks).toHaveBeenCalledWith(
+      'No existe una tarea'
+    );
     expect(component.tasks).toEqual([]);
     expect(component.notFoundMessage).toBe(
       'No se encontraron tareas con ese criterio'
@@ -93,6 +104,9 @@ describe('TaskSearchComponent', () => {
   }));
 
   it('maneja el error en la búsqueda', fakeAsync(() => {
+    fixture = TestBed.createComponent(TaskSearchComponent);
+    component = fixture.componentInstance;
+    component.ngOnInit();
     mockTaskService.searchTasks.and.returnValue(throwError('Search error'));
 
     const event = { detail: { value: 'error search' } } as CustomEvent;
@@ -100,8 +114,8 @@ describe('TaskSearchComponent', () => {
 
     tick(300);
 
-    expect(component.isLoading).toBeTrue();
-    expect(component.notFoundMessage).toBe('');
+    expect(component.isLoading).toBeFalse();
+    expect(component.notFoundMessage).toBe('Error al cargar tareas');
   }));
 
   it('borra los resultados en búsqueda vacía', () => {

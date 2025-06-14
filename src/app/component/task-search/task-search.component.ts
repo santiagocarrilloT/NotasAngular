@@ -70,7 +70,7 @@ export class TaskSearchComponent implements OnInit {
         },
         error: (err) => {
           this.isLoading = false;
-          this.notFoundMessage = 'Error al cargar tareas:';
+          this.notFoundMessage = 'Error al cargar tareas';
         },
       });
     });
