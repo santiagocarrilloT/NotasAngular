@@ -3,6 +3,7 @@
 # Aplicación de Notas con Angular + JSON Server
 
 Esta es una aplicación web desarrollada con **Angular** que permite gestionar tareas mediante operaciones CRUD. La aplicación incluye funcionalidades como autenticación simulada, pruebas unitarias básicas y un sistema de búsqueda avanzada.
+Se puede ejecutar en un entorno local, aunque tiene un avance para lograr generar una aplicación híbrida.
 
 ## Descripción breve
 
