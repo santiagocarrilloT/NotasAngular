@@ -1,6 +1,6 @@
 # NotasAngular
 
-# 📝 Aplicación de Notas con Angular + JSON Server
+# Aplicación de Notas con Angular + JSON Server
 
 Esta es una aplicación web desarrollada con **Angular** que permite gestionar tareas mediante operaciones CRUD. La aplicación incluye funcionalidades como autenticación simulada, pruebas unitarias básicas y un sistema de búsqueda avanzada.
 
@@ -37,9 +37,29 @@ Cada tarea contiene:
 ### 1. Clonar el repositorio
 
 ```bash
-git clone https://github.com/tu-usuario/tu-repo.git
-cd tu-repo
+git clone https://github.com/santiagocarrilloT/NotasAngular.git
+cd NotasAngular
+```
+---
+
+### 2. Instalar dependencias de ionic + angular
+```bash
 npm install
+```
+
+---
+
+### 3. Ejecutar Json Serve y ionic 
+```bash
 npx json-server --watch db.json --port 3000
 ionic serve
+```
+
+---
+
+### 4. Ejecutar pruebas 
+```bash
 ng test
+```
+
+
